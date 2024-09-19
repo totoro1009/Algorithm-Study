@@ -1,0 +1,6 @@
+total, max_passengers = 0, 0
+for _ in range(4):
+    out_, in_ = map(int, input().split())
+    total = total - out_ + in_
+    max_passengers = max(max_passengers, total)
+print(max_passengers)
