@@ -1,0 +1,16 @@
+h, w = map(int, input().split())  # 높이와 너비 입력받기
+grid = [input() for _ in range(h)]  # 그리드 입력받기
+
+for row in grid:
+    result = [-1] * w  # 각 줄에 대한 결과를 초기화 (모든 칸을 -1로 시작)
+    cloud_time = -1  # 구름이 아직 없는 상태
+
+    for i in range(w):
+        if row[i] == 'c':  # 구름이 있는 위치를 만나면
+            cloud_time = 0  # 구름이 도착했으므로 0으로 설정
+            result[i] = cloud_time
+        elif cloud_time != -1:  # 이전에 구름이 있었으면
+            cloud_time += 1  # 구름이 지나간 시간을 1씩 증가
+            result[i] = cloud_time
+    
+    print(' '.join(map(str, result)))  # 결과 출력
